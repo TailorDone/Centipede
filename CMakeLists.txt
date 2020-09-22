@@ -24,8 +24,8 @@ cmake_minimum_required(VERSION 3.15)
 #the project is called asteroids
 project(groupProject)
 
-#the project contains an executable named testSFML that uses the following cpp files
-add_executable(groupProject src/groupProject.cpp)
+#the project contains an executable named groupProject that uses the following cpp files
+add_executable(groupProject src/groupProject.cpp src/Player.cpp src/Player.hpp src/Mushroom.cpp src/Mushroom.hpp src src/PewPew.cpp src/PewPew.hpp)
 
 #create a folder named "cmake" at the top of your project and put the
 #findSFML.cmake file in it.  This line tells Cmake to look there for

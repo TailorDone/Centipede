@@ -7,10 +7,11 @@
 
 #include "PewPew.hpp"
 
-//sf::CircleShape drawPewPew(Player player1) {
-//    sf::CircleShape bullet(5,4);
-//    bullet.setPosition(sf::Vector2f(player1.getXPosition(), 850));
-//    bullet.setFillColor(sf::Color(255, 255, 255));
-//    return bullet;
-//}
+PewPew::PewPew(Player& playerOne) {
+    bullet.setRadius(5);
+    //sprite.setPointCount();
+    bullet.setFillColor(sf::Color(255, 255, 255));
+    float xPos = playerOne.getXPosition();
+    bullet.setPosition(sf::Vector2f(xPos, 850));
+}
 

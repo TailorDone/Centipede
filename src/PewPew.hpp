@@ -15,6 +15,8 @@
 
 class PewPew {
 public:
+    PewPew(Player& playerOne);
+    sf::CircleShape bullet;
     
     
 private:
@@ -22,7 +24,5 @@ private:
     
 };
 
-
-sf::CircleShape drawPewPew(Player player1);
 
 #endif /* PewPew_hpp */

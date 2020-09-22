@@ -2,6 +2,7 @@
 #include <vector>
 #include <iostream>
 #include "Mushroom.hpp"
+#include "MushroomGrid.hpp"
 #include "Player.hpp"
 #include "PewPew.hpp"
 
@@ -13,9 +14,9 @@ int main()
     // create the window
     sf::RenderWindow window(sf::VideoMode(1250, 1000), "Centipede");
     
-    std::vector<std::vector<int>> mushroomGrid;
-    locateMushrooms(mushroomGrid);
+    MushroomGrid mushroomGrid;
     Player playerOne;
+    bool bulletFired = false;
 
     // run the program as long as the window is open
     while (window.isOpen())
@@ -33,7 +34,7 @@ int main()
         // clear the window with black color
         window.clear(sf::Color::Black);
         
-        drawMushroom(window, mushroomGrid);
+        mushroomGrid.drawMushrooms(window);
         
         //Player playerOne;
         //Handles Movement of Player
@@ -50,10 +51,16 @@ int main()
         
         playerOne.drawPlayer(window);
         
-        //Shoot pew pew
-//        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) {
-//            window.draw(drawPewPew(**PLAYER**)
-//        }
+        //Shoot Pew Pew
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
+            bulletFired = true;
+        
+        if (bulletFired) {
+            PewPew newBullet(playerOne);
+            window.draw(newBullet.bullet);
+
+        }
+        
         
         
 

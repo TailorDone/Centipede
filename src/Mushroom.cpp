@@ -8,16 +8,23 @@
 #include "Mushroom.hpp"
 #include <cmath>
 
-
-sf::RectangleShape drawMushroom(int xPos, int yPos) {
-    sf::RectangleShape block(sf::Vector2f(50, 50));
-    block.setPosition(sf::Vector2f(xPos*50, yPos*50));
-    block.setFillColor(sf::Color(100, 250, 50));
-    return block;
+Mushroom::Mushroom(int row, int column) {
+    sprite.setSize(rectSize);
+    sprite.setPosition(sf::Vector2f(row*50, column*50));
+    sprite.setFillColor(sf::Color(100, 250, 50));
 }
 
 
-void createMushrooms(std::vector<std::vector<int>>& mushroomGrid) {
+void drawMushroom(sf::RenderWindow& window, std::vector<std::vector<int>>& mushroomGrid) {
+    for (int i = 0; i < mushroomGrid.size(); i++) {
+        int xPos = mushroomGrid[i][0];
+        int yPos = mushroomGrid[i][1];
+        Mushroom mushy(xPos, yPos);
+        window.draw(mushy.sprite);
+    }
+}
+
+void locateMushrooms(std::vector<std::vector<int>>& mushroomGrid) {
     int spawnChance = 5;
     for (int i = 0; i < 25; i++) {
         for (int j = 1; j < 16; j++) {

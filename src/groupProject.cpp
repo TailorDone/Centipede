@@ -14,7 +14,7 @@ int main()
     sf::RenderWindow window(sf::VideoMode(1250, 1000), "Centipede");
     
     std::vector<std::vector<int>> mushroomGrid;
-    createMushrooms(mushroomGrid);
+    locateMushrooms(mushroomGrid);
     Player playerOne;
 
     // run the program as long as the window is open
@@ -29,15 +29,11 @@ int main()
             if (event.type == sf::Event::Closed)
                 window.close();
         }
-        
-
+    
         // clear the window with black color
         window.clear(sf::Color::Black);
         
-        
-        for (int i = 0; i < mushroomGrid.size(); i++) {
-            window.draw(drawMushroom(mushroomGrid[i][0], mushroomGrid[i][1]));
-        }
+        drawMushroom(window, mushroomGrid);
         
         //Player playerOne;
         //Handles Movement of Player
@@ -54,19 +50,13 @@ int main()
         
         playerOne.drawPlayer(window);
         
-        
-
-        //window.draw(drawPlayer(xPos));
-        
         //Shoot pew pew
 //        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) {
 //            window.draw(drawPewPew(**PLAYER**)
 //        }
         
         
-        
 
-        
         // end the current frame
         window.display();
 

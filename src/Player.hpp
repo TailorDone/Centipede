@@ -2,7 +2,7 @@
 //  Player.hpp
 //  groupProject
 //
-//  Created by Tyler Speegle on 9/21/20.
+//  Created by Tyler Speegle & Taylor Dunn on 9/21/20.
 //
 
 #ifndef Player_hpp

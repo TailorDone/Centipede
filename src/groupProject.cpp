@@ -16,8 +16,9 @@ int main()
     
     MushroomGrid mushroomGrid;
     Player playerOne;
+    std::vector<PewPew> firedShot;
+    
     bool bulletFired = false;
-
     // run the program as long as the window is open
     while (window.isOpen())
     {
@@ -52,15 +53,33 @@ int main()
         playerOne.drawPlayer(window);
         
         //Shoot Pew Pew
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space)){
             bulletFired = true;
-        
-        if (bulletFired) {
-            PewPew newBullet(playerOne);
-            window.draw(newBullet.bullet);
-
+            PewPew newBullet;
+            newBullet.startXPosition = playerOne.getXPosition()+25;
+            firedShot.push_back(newBullet);
         }
         
+                  
+//
+//            int xPosition = playerOne.getXPosition() + 25;
+//            for(int i = 880; i > 0; i-=20){
+//                PewPew newBullet;
+//                newBullet.startXPosition = xPosition;
+//                newBullet.startYPosition = i;
+//                firedShot.push_back(newBullet);
+//            }
+            for (PewPew& bullet : firedShot){
+                bullet.move();
+                bullet.drawBullet(window);
+            }
+    
+            //PewPew newBullet;
+            //newBullet.startXPosition = playerOne.getXPosition() + 25;
+            //newBullet.drawBullet(window);
+        
+        //sprite.setPointCount();
+     
         
         
 

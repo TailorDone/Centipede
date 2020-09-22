@@ -2,7 +2,7 @@
 //  PewPew.hpp
 //  groupProject
 //
-//  Created by Tyler Speegle on 9/21/20.
+//  Created by Tyler Speegle & Taylor Dunn on 9/21/20.
 //
 
 #ifndef PewPew_hpp
@@ -15,12 +15,15 @@
 
 class PewPew {
 public:
-    PewPew(Player& playerOne);
+    PewPew();
     sf::CircleShape bullet;
-    
-    
+    int startXPosition;
+    int startYPosition = 890;
+    void drawBullet(sf::RenderWindow& window);
+    void move();
+    //TODO get start position
 private:
-    int xPos;
+    
     
 };
 

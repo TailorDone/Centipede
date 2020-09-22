@@ -2,7 +2,7 @@
 //  Mushroom.cpp
 //  groupProject
 //
-//  Created by Tyler Speegle on 9/21/20.
+//  Created by Tyler Speegle & Taylor Dunn on 9/21/20.
 //
 
 #include "Mushroom.hpp"

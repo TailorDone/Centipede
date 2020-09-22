@@ -2,7 +2,7 @@
 //  MushroomGrid.cpp
 //  groupProject
 //
-//  Created by Tyler Speegle on 9/22/20.
+//  Created by Tyler Speegle & Taylor Dunn on 9/22/20.
 //
 
 #include "MushroomGrid.hpp"

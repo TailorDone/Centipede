@@ -15,7 +15,7 @@
 
 class PewPew {
 public:
-    PewPew();
+    PewPew(float startPosition);
     sf::CircleShape bullet;
     int startXPosition;
     int startYPosition = 890;

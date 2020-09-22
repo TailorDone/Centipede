@@ -18,7 +18,6 @@ int main()
     Player playerOne;
     std::vector<PewPew> firedShot;
     
-    bool bulletFired = false;
     // run the program as long as the window is open
     while (window.isOpen())
     {
@@ -30,6 +29,14 @@ int main()
             // "close requested" event: we close the window
             if (event.type == sf::Event::Closed)
                 window.close();
+            
+            if (event.type == sf::Event::KeyPressed) {
+                if (event.key.code == sf::Keyboard::Space) {
+                    float startPosition = playerOne.getXPosition()+25;
+                    PewPew newBullet(startPosition);
+                    firedShot.push_back(newBullet);
+                }
+            }
         }
     
         // clear the window with black color
@@ -41,47 +48,27 @@ int main()
         //Handles Movement of Player
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) { // move left...
             if (playerOne.getXPosition() > 0) {
-                playerOne.setXPos(-0.4);
+                playerOne.setXPos(-0.3);
             }
         }
         else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) { // move right...
             if (playerOne.getXPosition() < 1190) {
-                playerOne.setXPos(0.4);
+                playerOne.setXPos(0.3);
             }
         }
         
         playerOne.drawPlayer(window);
         
-        //Shoot Pew Pew
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space)){
-            bulletFired = true;
-            PewPew newBullet;
-            newBullet.startXPosition = playerOne.getXPosition()+25;
-            firedShot.push_back(newBullet);
+        
+
+        for (PewPew& bullet : firedShot){
+            bullet.move();
+            bullet.drawBullet(window);
         }
-        
-                  
-//
-//            int xPosition = playerOne.getXPosition() + 25;
-//            for(int i = 880; i > 0; i-=20){
-//                PewPew newBullet;
-//                newBullet.startXPosition = xPosition;
-//                newBullet.startYPosition = i;
-//                firedShot.push_back(newBullet);
-//            }
-            for (PewPew& bullet : firedShot){
-                bullet.move();
-                bullet.drawBullet(window);
-            }
+                
+
     
-            //PewPew newBullet;
-            //newBullet.startXPosition = playerOne.getXPosition() + 25;
-            //newBullet.drawBullet(window);
-        
-        //sprite.setPointCount();
-     
-        
-        
+       
 
         // end the current frame
         window.display();

@@ -7,23 +7,16 @@
 
 #include "PewPew.hpp"
 
-PewPew::PewPew() {
+PewPew::PewPew(float startPosition) {
     bullet.setRadius(5);
-    //sprite.setPointCount();
     bullet.setFillColor(sf::Color(255, 255, 255));
-    bullet.setPosition(sf::Vector2f(startXPosition, startYPosition));
+    bullet.setPosition(sf::Vector2f(startPosition, startYPosition));
 }
 
 void PewPew::drawBullet(sf::RenderWindow& window) {
-   
     window.draw(bullet);
-//    while (startYPosition > 0){
-//        startYPosition -= 5;
-//        bullet.move(startXPosition, startYPosition);
-//        window.draw(bullet);
-//    }
 }
 
 void PewPew::move(){
-   bullet.move(0, -5);
+   bullet.move(0, -1);
 }

@@ -66,13 +66,18 @@ int main()
         
         
 
-        for (PewPew& bullet : firedShot){
-            bullet.move();
-            bullet.removePewPews(firedShot, bulletCount);
-            bullet.drawBullet(window);
-            for (int i = 0; i < mushroomGrid.getSize(); i++){
-                if (mushroomGrid[i].bulletCollision(bullet)){
-                    mushroomGrid[i].sprite.setFillColor(sf::Color(255,0,0));
+        for (int i = 0; i < firedShot.size(); i++){
+            firedShot[i].move();
+            firedShot[i].removePewPews(firedShot, bulletCount);
+            firedShot[i].drawBullet(window);
+            for (int j = 0; j < mushroomGrid.getSize(); j++){
+                if (mushroomGrid[j].bulletCollision(firedShot[i])){
+                    firedShot.erase(firedShot.begin() + i);
+                    bulletCount--;
+                    mushroomGrid[j].mushroomHit();
+                    if (mushroomGrid[j].getHealth() == 0) {
+                        mushroomGrid[j].sprite.setPosition(sf::Vector2f(-1 * 50, -1 * 50));
+                    }
                 }
             }
         }

@@ -23,8 +23,21 @@ int Mushroom::getColumn() {
     return column;
 }
 
+int Mushroom::getHealth() {
+    return health;
+}
+
 bool Mushroom::bulletCollision(PewPew& bullet){
     Collision check;
     return (check.BoundingBoxTest(sprite, bullet.bullet));
 }
+
+void Mushroom::mushroomHit() {
+    health--;
+    if (health == 2)
+        sprite.setFillColor(sf::Color(255,255,0));
+    else if (health == 1)
+        sprite.setFillColor(sf::Color(255,0,0));
+}
+    
 

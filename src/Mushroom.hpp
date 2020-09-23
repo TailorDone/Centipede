@@ -20,12 +20,12 @@ public:
     int getRow();
     int getColumn();
     bool bulletCollision(PewPew& bullet);
+    void mushroomHit();
+    int getHealth();
 private:
     sf::Vector2f rectSize = {50, 50};
     int row, column;
-    int health = 3;
-    int red, green, blue;
-    
+    int health = 3;    
 };
 
 

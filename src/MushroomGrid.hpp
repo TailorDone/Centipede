@@ -21,7 +21,7 @@ public:
     Mushroom operator[](int index) const;
     Mushroom& operator[](int index);
 private:
-    int spawnChance = 5;
+    int spawnChance = 8;
     int size = 0;
 };
 

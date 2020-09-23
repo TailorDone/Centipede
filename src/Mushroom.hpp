@@ -15,7 +15,7 @@
 
 class Mushroom {
 public:
-    Mushroom(int row, int column);
+    Mushroom(int column, int row);
     sf::RectangleShape sprite;
     int getRow();
     int getColumn();

@@ -20,6 +20,7 @@ public:
     int getSize();
     Mushroom operator[](int index) const;
     Mushroom& operator[](int index);
+    bool adjacentMushroom(int column, int row);
 private:
     int spawnChance = 5;
     int size = 0;

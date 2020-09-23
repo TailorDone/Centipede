@@ -9,10 +9,12 @@
 
 #include <cmath>
 
-Mushroom::Mushroom(int row, int column) {
+Mushroom::Mushroom(int column_, int row_) {
     sprite.setSize(rectSize);
-    sprite.setPosition(sf::Vector2f(row*50, column*50));
+    sprite.setPosition(sf::Vector2f(column*50, row*50));
     sprite.setFillColor(sf::Color(100, 250, 50));
+    column = column_;
+    row = row_;
 }
 
 int Mushroom::getRow() {

@@ -6,6 +6,7 @@
 //
 
 #include "Mushroom.hpp"
+
 #include <cmath>
 
 Mushroom::Mushroom(int row, int column) {
@@ -22,5 +23,8 @@ int Mushroom::getColumn() {
     return column;
 }
 
-
+bool Mushroom::bulletCollision(PewPew& bullet){
+    Collision check;
+    return (check.BoundingBoxTest(sprite, bullet.bullet));
+}
 

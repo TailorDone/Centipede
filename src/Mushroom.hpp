@@ -10,6 +10,8 @@
 
 #include <stdio.h>
 #include <SFML/Graphics.hpp>
+#include "PewPew.hpp"
+#include "Collision.hpp"
 
 class Mushroom {
 public:
@@ -17,7 +19,7 @@ public:
     sf::RectangleShape sprite;
     int getRow();
     int getColumn();
-    
+    bool bulletCollision(PewPew& bullet);
 private:
     sf::Vector2f rectSize = {50, 50};
     int row, column;

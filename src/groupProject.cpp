@@ -5,6 +5,7 @@
 #include "MushroomGrid.hpp"
 #include "Player.hpp"
 #include "PewPew.hpp"
+#include "Collision.hpp"
 
 int main()
 {
@@ -69,12 +70,13 @@ int main()
             bullet.move();
             bullet.removePewPews(firedShot, bulletCount);
             bullet.drawBullet(window);
+            for (int i = 0; i < mushroomGrid.getSize(); i++){
+                if (mushroomGrid[i].bulletCollision(bullet)){
+                    mushroomGrid[i].sprite.setFillColor(sf::Color(255,0,0));
+                }
+            }
         }
-                
-
-    
-       
-
+                    
         // end the current frame
         window.display();
 

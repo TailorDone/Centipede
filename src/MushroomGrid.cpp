@@ -18,6 +18,7 @@ void MushroomGrid::spawnMushrooms() {
             if (spawnRoll < spawnChance){
                 Mushroom mushy(i, j);
                 mushroomGrid.push_back(Mushroom {mushy});
+                size++;
             }
         }
     }
@@ -26,4 +27,16 @@ void MushroomGrid::spawnMushrooms() {
 void MushroomGrid::drawMushrooms(sf::RenderWindow& window) {
     for (Mushroom mushy : mushroomGrid)
         window.draw(mushy.sprite);
+}
+
+int MushroomGrid::getSize(){
+    return size;
+}
+
+Mushroom MushroomGrid::operator[](int index) const{
+    return mushroomGrid[index];
+}
+
+Mushroom& MushroomGrid::operator[](int index){
+    return mushroomGrid[index];
 }

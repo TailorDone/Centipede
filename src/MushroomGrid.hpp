@@ -17,9 +17,13 @@ public:
     std::vector<Mushroom> mushroomGrid;
     void spawnMushrooms();
     void drawMushrooms(sf::RenderWindow& window);
+    int getSize();
+    Mushroom operator[](int index) const;
+    Mushroom& operator[](int index);
 private:
     int spawnChance = 5;
-    
+    int size = 0;
 };
+
 
 #endif /* MushroomGrid_hpp */

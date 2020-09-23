@@ -5,6 +5,7 @@
 #include "MushroomGrid.hpp"
 #include "Player.hpp"
 #include "PewPew.hpp"
+#include "Centipede.hpp"
 #include "Collision.hpp"
 
 int main()
@@ -17,6 +18,7 @@ int main()
     
     
     MushroomGrid mushroomGrid;
+    Centipede centipede;
     Player playerOne;
     std::vector<PewPew> firedShot;
     int bulletCount = 0;
@@ -64,6 +66,9 @@ int main()
         
         playerOne.drawPlayer(window);
         
+        centipede.move();
+        centipede.drawCentipede(window);
+
         
 
         for (int i = 0; i < firedShot.size(); i++){

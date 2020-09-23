@@ -46,12 +46,6 @@ public:
  
     virtual ~Collision();
  
-    /**
-     *  Test for bounding box collision using OBB Box.
-     *  To test against AABB use PixelPerfectTest with AlphaLimit = 0
-     *
-     *  @see Collision::PixelPerfectTest
-     */
     static bool BoundingBoxTest(const sf::Shape& Object1, const sf::Shape& Object2);
  
     Collision();

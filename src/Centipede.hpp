@@ -2,7 +2,7 @@
 //  Centipede.hpp
 //  groupProject
 //
-//  Created by Tyler Speegle on 9/22/20.
+//  Created by Tyler Speegle and Taylor Dunn on 9/22/20.
 //
 
 #ifndef Centipede_hpp
@@ -12,23 +12,32 @@
 #include <vector>
 #include <SFML/Graphics.hpp>
 
-
-class Centipede {
+class CentipedeSegment{
 public:
-    Centipede();
-    Centipede(int length);
-    std::vector<sf::CircleShape> centipedeBody;
-    void drawCentipede(sf::RenderWindow& window);
-    void move(sf::Time dt);
+    CentipedeSegment();
+    CentipedeSegment(int i);
+    sf::CircleShape segment;
     void moveRight(sf::Time dt);
     void moveLeft(sf::Time dt);
     void moveDown();
+    bool movingRight;
+    //sf::CircleShape head;
+private:
+};
+
+class Centipede {
+public:
+    std::vector<CentipedeSegment> centipede;
+    Centipede();
+    Centipede(int length);
+    void move(sf::Time dt);
+    void drawCentipede(sf::RenderWindow& window);
+    CentipedeSegment operator[](int index) const;
+    CentipedeSegment& operator[](int index);
 private:
     int bodyLength = 10;
-    bool movingRight;
-    sf::CircleShape head;
-    sf::CircleShape body;
-    
 };
+
+
 
 #endif /* Centipede_hpp */

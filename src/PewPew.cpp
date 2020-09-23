@@ -6,17 +6,33 @@
 //
 
 #include "PewPew.hpp"
+#include <iostream>
 
 PewPew::PewPew(float startPosition) {
     bullet.setRadius(5);
     bullet.setFillColor(sf::Color(255, 255, 255));
-    bullet.setPosition(sf::Vector2f(startPosition, startYPosition));
+    bullet.setPosition(sf::Vector2f(startPosition, 890));
 }
 
 void PewPew::drawBullet(sf::RenderWindow& window) {
     window.draw(bullet);
 }
 
+float PewPew::getYPosition() {
+    return YPosition;
+}
+
+void PewPew::setYPosition(float value) {
+    YPosition = value;
+}
+
 void PewPew::move(){
-   bullet.move(0, -1);
+    bullet.move(0, -0.7);
+}
+
+void PewPew::removePewPews(std::vector<PewPew>& firedShots, int& bulletCount){
+    if (bulletCount == 10){
+        firedShots.erase(firedShots.begin());
+        bulletCount--;
+    }
 }

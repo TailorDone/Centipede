@@ -42,10 +42,10 @@ void Centipede::drawCentipede(sf::RenderWindow& window) {
         window.draw(bodyPart);
 }
 
-void Centipede::move() {
+void Centipede::move(sf::Time dt) {
     if (movingRight) {
         if (centipedeBody[0].getPosition().x < 1200)
-            moveRight();
+            moveRight(dt);
         else if (centipedeBody[0].getPosition().x >= 1200) {
             moveDown();
             movingRight = false;
@@ -53,7 +53,7 @@ void Centipede::move() {
     }
     else if (!movingRight) {
         if (centipedeBody[0].getPosition().x > 0)
-            moveLeft();
+            moveLeft(dt);
         else if (centipedeBody[0].getPosition().x <= 0) {
             moveDown();
             movingRight = true;
@@ -62,18 +62,17 @@ void Centipede::move() {
     
 }
 
-void Centipede::moveRight() {
+void Centipede::moveRight(sf::Time dt) {
     for (int i = 0; i < centipedeBody.size(); i++) {
         sf::Vector2f currentPosition = centipedeBody[i].getPosition();
-        centipedeBody[i].setPosition(currentPosition.x + 0.3, currentPosition.y);
+        centipedeBody[i].move(625 * dt.asSeconds(), 0);
     }
 }
 
-void Centipede::moveLeft() {
+void Centipede::moveLeft(sf::Time dt) {
     for (int i = 0; i < centipedeBody.size(); i++) {
         sf::Vector2f currentPosition = centipedeBody[i].getPosition();
-        centipedeBody[i].setPosition(currentPosition.x - 0.3, currentPosition.y);
-    }
+        centipedeBody[i].move(-625 * dt.asSeconds(), 0);    }
 }
 
 void Centipede::moveDown() {

@@ -21,7 +21,7 @@ public:
     float getYPosition();
     void setYPosition(float value);
     void drawBullet(sf::RenderWindow& window);
-    void move();
+    void move(sf::Time dt);
     void removePewPews(std::vector<PewPew>& firedShots, int& bulletCount);
 private:
     int YPosition;

@@ -26,8 +26,8 @@ void PewPew::setYPosition(float value) {
     YPosition = value;
 }
 
-void PewPew::move(){
-    bullet.move(0, -0.7);
+void PewPew::move(sf::Time dt){
+    bullet.move(0, (-1000 * dt.asSeconds()));
 }
 
 void PewPew::removePewPews(std::vector<PewPew>& firedShots, int& bulletCount){

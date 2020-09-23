@@ -19,9 +19,9 @@ public:
     Centipede(int length);
     std::vector<sf::CircleShape> centipedeBody;
     void drawCentipede(sf::RenderWindow& window);
-    void move();
-    void moveRight();
-    void moveLeft();
+    void move(sf::Time dt);
+    void moveRight(sf::Time dt);
+    void moveLeft(sf::Time dt);
     void moveDown();
 private:
     int bodyLength = 10;

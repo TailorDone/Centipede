@@ -15,11 +15,12 @@ class Player {
 public:
     Player();
     sf::CircleShape sprite;
-    int getXPosition();
-    void setXPos(float newPos);
+//    int getXPosition();
+    void moveLeft(sf::Time dt);
+    void moveRight(sf::Time dt);
     void drawPlayer(sf::RenderWindow& window);
 private:
-    float xPos;
+//    float xPos;
     
 };
 

@@ -18,8 +18,6 @@ public:
     PewPew(float startPosition);
     sf::CircleShape bullet;
     int startXPosition;
-    float getYPosition();
-    void setYPosition(float value);
     void drawBullet(sf::RenderWindow& window);
     void move(sf::Time dt);
     void removePewPews(std::vector<PewPew>& firedShots, int& bulletCount);

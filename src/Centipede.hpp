@@ -11,16 +11,20 @@
 #include <stdio.h>
 #include <vector>
 #include <SFML/Graphics.hpp>
+#include "Mushroom.hpp"
+#include "MushroomGrid.hpp"
 
 class CentipedeSegment{
 public:
     CentipedeSegment();
     CentipedeSegment(int i);
     sf::CircleShape segment;
+    bool MushroomCollision(Mushroom& mushy);
     void moveRight(sf::Time dt);
     void moveLeft(sf::Time dt);
-    void moveDown();
+    void moveDown(sf::Time dt);
     bool movingRight;
+    
     //sf::CircleShape head;
 private:
 };
@@ -30,7 +34,7 @@ public:
     std::vector<CentipedeSegment> centipede;
     Centipede();
     Centipede(int length);
-    void move(sf::Time dt);
+    void move(sf::Time dt, MushroomGrid& mushroomGrid);
     void drawCentipede(sf::RenderWindow& window);
     CentipedeSegment operator[](int index) const;
     CentipedeSegment& operator[](int index);

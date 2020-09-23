@@ -15,7 +15,7 @@ class Player {
 public:
     Player();
     sf::CircleShape sprite;
-//    int getXPosition();
+    int getCenter();
     void moveLeft(sf::Time dt);
     void moveRight(sf::Time dt);
     void drawPlayer(sf::RenderWindow& window);

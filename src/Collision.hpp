@@ -46,7 +46,8 @@ public:
  
     virtual ~Collision();
  
-    static bool BoundingBoxTest(const sf::Shape& Object1, const sf::Shape& Object2);
+    static bool BulletCollisionTest(const sf::Shape& Object1, const sf::Shape& Object2);
+    static bool MushroomCollisionTest(const sf::Shape& Object1, const sf::Shape& Object2);
  
     Collision();
 };

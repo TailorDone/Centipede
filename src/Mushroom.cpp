@@ -31,7 +31,7 @@ int Mushroom::getHealth() {
 
 bool Mushroom::bulletCollision(PewPew& bullet){
     Collision check;
-    return (check.BoundingBoxTest(sprite, bullet.bullet));
+    return (check.BulletCollisionTest(sprite, bullet.bullet));
 }
 
 void Mushroom::mushroomHit() {

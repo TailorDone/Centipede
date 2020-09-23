@@ -26,6 +26,13 @@ int main()
     // run the program as long as the window is open
     while (window.isOpen())
     {
+        if (centipede.centipede.size() == 0) {
+            window.close() ;
+            //winScreen == true;
+            //return 0;
+        }
+            
+            
         sf::Time dt = clock.restart();
         
         // check all the window's events that were triggered since the last iteration of the loop
@@ -38,7 +45,7 @@ int main()
             
             if (event.type == sf::Event::KeyPressed) {
                 if (event.key.code == sf::Keyboard::Space && bulletCount < 11) {
-                    float startPosition = playerOne.sprite.getPosition().x + 25;
+                    float startPosition = playerOne.getCenter();
                     PewPew newBullet(startPosition);
                     firedShot.push_back(newBullet);
                     bulletCount++;
@@ -66,7 +73,7 @@ int main()
         
         playerOne.drawPlayer(window);
         
-        centipede.move(dt);
+        centipede.move(dt, mushroomGrid);
         centipede.drawCentipede(window);
 
         
@@ -85,12 +92,19 @@ int main()
                     }
                 }
             }
+            Collision centipedeShot;
+            if (centipedeShot.BulletCollisionTest(centipede[0].segment, firedShot[i].bullet)){
+                firedShot.erase(firedShot.begin() + i);
+                bulletCount--;
+                centipede.centipede.pop_back();
+            }
         }
                     
         // end the current frame
         window.display();
 
     }
+    
 
     return 0;
 }

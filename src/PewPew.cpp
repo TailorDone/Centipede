@@ -18,14 +18,6 @@ void PewPew::drawBullet(sf::RenderWindow& window) {
     window.draw(bullet);
 }
 
-float PewPew::getYPosition() {
-    return YPosition;
-}
-
-void PewPew::setYPosition(float value) {
-    YPosition = value;
-}
-
 void PewPew::move(sf::Time dt){
     bullet.move(0, (-1000 * dt.asSeconds()));
 }

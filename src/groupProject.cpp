@@ -1,4 +1,5 @@
 #include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
 #include <vector>
 #include <iostream>
 #include "Mushroom.hpp"
@@ -8,6 +9,7 @@
 #include "Centipede.hpp"
 #include "Collision.hpp"
 
+
 int main()
 {
     srand (time(NULL));
@@ -16,6 +18,21 @@ int main()
     sf::RenderWindow window(sf::VideoMode(1250, 1000), "Centipede");
     window.setFramerateLimit(60);
 
+    sf::SoundBuffer buffer;
+    buffer.loadFromFile("pew.wav");
+    sf::Sound sound;
+    sound.setBuffer(buffer);
+    sound.setVolume(10);
+
+    sf::SoundBuffer buffer2;
+    buffer2.loadFromFile("Chiptronical.ogg");
+    sf::Sound backgroundMusic;
+    backgroundMusic.setBuffer(buffer2);
+    backgroundMusic.setVolume(10);
+    backgroundMusic.setLoop(true);
+    backgroundMusic.play();
+
+    
     
     MushroomGrid mushroomGrid;
     Centipede centipede;
@@ -45,6 +62,7 @@ int main()
                 if (event.key.code == sf::Keyboard::Space && bulletCount < 11) {
                     float startPosition = playerOne.getCenter();
                     PewPew newBullet(startPosition);
+                    sound.play();
                     firedShot.push_back(newBullet);
                     bulletCount++;
                 }

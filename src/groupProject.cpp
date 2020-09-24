@@ -28,8 +28,6 @@ int main()
     {
         if (centipede.centipede.size() == 0) {
             window.close() ;
-            //winScreen == true;
-            //return 0;
         }
             
 
@@ -101,6 +99,10 @@ int main()
             }
         }
 
+        //check if centipede is on player row
+        if (centipede.centipede[0].segment.getPosition().y == 900)
+            window.close();
+        
         // end the current frame
         window.display();
 

@@ -47,7 +47,7 @@ public:
     CentipedeSegment operator[](int index) const;
     CentipedeSegment& operator[](int index);
 private:
-    //int bodyLength = 10;
+
 };
 
 

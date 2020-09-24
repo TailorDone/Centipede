@@ -10,11 +10,11 @@
 #include <cmath>
 
 Mushroom::Mushroom(int column_, int row_) {
+    column = column_;
+    row = row_;
     sprite.setSize(rectSize);
     sprite.setPosition(sf::Vector2f(column*50, row*50));
     sprite.setFillColor(sf::Color(100, 250, 50));
-    column = column_;
-    row = row_;
 }
 
 int Mushroom::getRow() {
@@ -30,8 +30,7 @@ int Mushroom::getHealth() {
 }
 
 bool Mushroom::bulletCollision(PewPew& bullet){
-    Collision check;
-    return (check.BulletCollisionTest(sprite, bullet.bullet));
+    return (CollisionTest(sprite, bullet.bullet));
 }
 
 void Mushroom::mushroomHit() {

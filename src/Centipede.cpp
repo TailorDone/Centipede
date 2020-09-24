@@ -66,19 +66,13 @@ void Centipede::drawCentipede(sf::RenderWindow& window) {
     }
 }
 
-bool CentipedeSegment::MushroomCollision(Mushroom& mushy){
-    Collision check;
-    return (check.MushroomCollisionTest(segment, mushy.sprite));
-}
-
 void Centipede::move(MushroomGrid& mushroomGrid) {
-    Collision check;
     for(int i = 0; i < centipede.size(); i++){
         if (centipede[i].movingRight) {
             if (centipede[i].segment.getPosition().x < 1200) {
                 centipede[i].moveRight();
                 for (int j = 0; j < mushroomGrid.getSize(); j++) {
-                    if (check.MushroomCollisionTest(centipede[i].segment, mushroomGrid[j].sprite)) {
+                    if (CollisionTest(centipede[i].segment, mushroomGrid[j].sprite)) {
                         centipede[i].moveDown();
                         centipede[i].movingRight = false;
                     }
@@ -93,7 +87,7 @@ void Centipede::move(MushroomGrid& mushroomGrid) {
             if (centipede[i].segment.getPosition().x > 0) {
                 centipede[i].moveLeft();
                 for (int j = 0; j < mushroomGrid.getSize(); j++) {
-                    if (check.MushroomCollisionTest(centipede[i].segment, mushroomGrid[j].sprite)) {
+                    if (CollisionTest(centipede[i].segment, mushroomGrid[j].sprite)) {
                         centipede[i].moveDown();
                         centipede[i].movingRight = true;
                     }

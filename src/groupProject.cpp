@@ -183,8 +183,7 @@ int main()
                 firedShot[i].removePewPews(firedShot, bulletCount);
                 firedShot[i].drawBullet(window);
                 for (int j = 0; j < mushroomGrid.getSize(); j++){
-                    Collision mushroomShot;
-                    if (mushroomShot.BulletCollisionTest(mushroomGrid[j].sprite, firedShot[i].bullet)){
+                    if (CollisionTest(mushroomGrid[j].sprite, firedShot[i].bullet)){
                         firedShot.erase(firedShot.begin() + i);
                         bulletCount--;
                         mushroomGrid[j].mushroomHit();
@@ -193,11 +192,11 @@ int main()
                         }
                     }
                 }
-                Collision centipedeShot;
-                if (centipedeShot.BulletCollisionTest(centipede[0].segment, firedShot[i].bullet)){
+                if (CollisionTest(centipede[0].segment, firedShot[i].bullet)){
                     firedShot.erase(firedShot.begin() + i);
                     bulletCount--;
                     centipede.centipede.pop_back();
+                    centipede.setBodyLength(centipede.getBodyLength()-1);
                 }
             }
             

@@ -12,20 +12,12 @@
 #include <SFML/Graphics.hpp>
 #include "Player.hpp"
 
-
-class PewPew {
-public:
+struct PewPew {
     PewPew(float startPosition);
     sf::CircleShape bullet;
-    int startXPosition;
+    void removePewPews(std::vector<PewPew>& firedShots, int& bulletCount);
     void drawBullet(sf::RenderWindow& window);
     void move(sf::Time dt);
-    void removePewPews(std::vector<PewPew>& firedShots, int& bulletCount);
-private:
-    int YPosition;
-    
-    
 };
-
 
 #endif /* PewPew_hpp */

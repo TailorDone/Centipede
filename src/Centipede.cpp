@@ -19,12 +19,19 @@ CentipedeSegment::CentipedeSegment(int i){
     }
 }
 
-CentipedeSegment Centipede::operator[](int index) const{
-    return centipede[index];
+void CentipedeSegment::moveRight() {
+    sf::Vector2f currentPosition = segment.getPosition();
+    segment.setPosition(currentPosition.x + 10, currentPosition.y);
 }
 
-CentipedeSegment& Centipede::operator[](int index){
-    return centipede[index];
+void CentipedeSegment::moveLeft() {
+    sf::Vector2f currentPosition = segment.getPosition();
+    segment.setPosition(currentPosition.x - 10, currentPosition.y);
+}
+
+void CentipedeSegment::moveDown() {
+    sf::Vector2f currentPosition = segment.getPosition();
+    segment.setPosition(currentPosition.x, currentPosition.y + 50);
 }
 
 Centipede::Centipede(){
@@ -52,18 +59,16 @@ Centipede& Centipede::operator=(const Centipede& rhs) {
     return *this;
 }
 
-void Centipede::setBodyLength(int i) {
-    bodyLength = i;
+CentipedeSegment Centipede::operator[](int index) const{
+    return centipede[index];
+}
+
+CentipedeSegment& Centipede::operator[](int index){
+    return centipede[index];
 }
 
 int Centipede::getBodyLength() {
     return bodyLength;
-}
-
-void Centipede::drawCentipede(sf::RenderWindow& window) {
-    for (int i = 0; i < centipede.size(); i++){
-        window.draw(centipede[i].segment);
-    }
 }
 
 void Centipede::move(MushroomGrid& mushroomGrid) {
@@ -101,17 +106,14 @@ void Centipede::move(MushroomGrid& mushroomGrid) {
     }
 }
 
-void CentipedeSegment::moveRight() {
-    sf::Vector2f currentPosition = segment.getPosition();
-    segment.setPosition(currentPosition.x + 10, currentPosition.y);
+void Centipede::drawCentipede(sf::RenderWindow& window) {
+    for (int i = 0; i < centipede.size(); i++){
+        window.draw(centipede[i].segment);
+    }
 }
 
-void CentipedeSegment::moveLeft() {
-    sf::Vector2f currentPosition = segment.getPosition();
-    segment.setPosition(currentPosition.x - 10, currentPosition.y);
+void Centipede::setBodyLength(int i) {
+    bodyLength = i;
 }
 
-void CentipedeSegment::moveDown() {
-    sf::Vector2f currentPosition = segment.getPosition();
-    segment.setPosition(currentPosition.x, currentPosition.y + 50);
-}
+

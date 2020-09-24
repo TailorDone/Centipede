@@ -17,17 +17,14 @@ class Mushroom {
 public:
     Mushroom(int column, int row);
     sf::RectangleShape sprite;
+    void mushroomHit();
     int getRow();
     int getColumn();
-    bool bulletCollision(PewPew& bullet);
-    void mushroomHit();
     int getHealth();
 private:
     sf::Vector2f rectSize = {50, 50};
     int row, column;
     int health = 3;    
 };
-
-
 
 #endif /* Mushroom_hpp */

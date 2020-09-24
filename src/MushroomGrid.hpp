@@ -15,12 +15,12 @@ class MushroomGrid {
 public:
     MushroomGrid();
     std::vector<Mushroom> mushroomGrid;
-    void spawnMushrooms();
-    void respawn();
-    void drawMushrooms(sf::RenderWindow& window);
-    int getSize();
     Mushroom operator[](int index) const;
     Mushroom& operator[](int index);
+    void drawMushrooms(sf::RenderWindow& window);
+    void spawnMushrooms();
+    void respawn();
+    int getSize();
     bool adjacentMushroom(int column, int row);
 private:
     int spawnChance = 5;

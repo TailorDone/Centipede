@@ -14,42 +14,31 @@
 #include "Mushroom.hpp"
 #include "MushroomGrid.hpp"
 
-class CentipedeSegment{
-public:
-    CentipedeSegment();
+struct CentipedeSegment{
     CentipedeSegment(int i);
     sf::CircleShape segment;
-    bool MushroomCollision(Mushroom& mushy);
+    bool movingRight;
     void moveRight();
     void moveLeft();
     void moveDown();
-    bool movingRight;
-private:
 };
 
 class Centipede {
 public:
     Centipede();
-    Centipede(int bodyLength);
-    
     //Rule of 3 declaration
     Centipede(const Centipede& rhs);
     Centipede& operator=(const Centipede& rhs);
-    //~Centipede();
-    
-    int bodyLength = 5;
+    CentipedeSegment operator[](int index) const;
+    CentipedeSegment& operator[](int index);
     std::vector<CentipedeSegment> centipede;
-    
+    //~Centipede(); We know we should have this...
+    int getBodyLength();
     void move(MushroomGrid& mushroomGrid);
     void drawCentipede(sf::RenderWindow& window);
     void setBodyLength(int i);
-    int getBodyLength();
-    CentipedeSegment operator[](int index) const;
-    CentipedeSegment& operator[](int index);
 private:
-
+    int bodyLength = 5;
 };
-
-
 
 #endif /* Centipede_hpp */

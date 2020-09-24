@@ -11,6 +11,19 @@ MushroomGrid::MushroomGrid() {
     spawnMushrooms();
 }
 
+Mushroom MushroomGrid::operator[](int index) const{
+    return mushroomGrid[index];
+}
+
+Mushroom& MushroomGrid::operator[](int index){
+    return mushroomGrid[index];
+}
+
+void MushroomGrid::drawMushrooms(sf::RenderWindow& window) {
+    for (Mushroom mushy : mushroomGrid)
+        window.draw(mushy.sprite);
+}
+
 void MushroomGrid::spawnMushrooms() {
     for (int i = 2; i < 23; i++) {
         for (int j = 1; j < 16; j++) {
@@ -27,26 +40,11 @@ void MushroomGrid::spawnMushrooms() {
 }
 
 void MushroomGrid::respawn() {
-//    for (int i = 0; i < mushroomGrid.size(); i++)
-//        mushroomGrid.pop_back();
     spawnMushrooms();
-}
-
-void MushroomGrid::drawMushrooms(sf::RenderWindow& window) {
-    for (Mushroom mushy : mushroomGrid)
-        window.draw(mushy.sprite);
 }
 
 int MushroomGrid::getSize(){
     return size;
-}
-
-Mushroom MushroomGrid::operator[](int index) const{
-    return mushroomGrid[index];
-}
-
-Mushroom& MushroomGrid::operator[](int index){
-    return mushroomGrid[index];
 }
 
 bool MushroomGrid::adjacentMushroom(int column, int row){

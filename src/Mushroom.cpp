@@ -7,14 +7,20 @@
 
 #include "Mushroom.hpp"
 
-#include <cmath>
-
 Mushroom::Mushroom(int column_, int row_) {
     column = column_;
     row = row_;
     sprite.setSize(rectSize);
     sprite.setPosition(sf::Vector2f(column*50, row*50));
     sprite.setFillColor(sf::Color(100, 250, 50));
+}
+
+void Mushroom::mushroomHit() {
+    health--;
+    if (health == 2)
+        sprite.setFillColor(sf::Color(255,255,0));
+    else if (health == 1)
+        sprite.setFillColor(sf::Color(255,0,0));
 }
 
 int Mushroom::getRow() {
@@ -28,17 +34,3 @@ int Mushroom::getColumn() {
 int Mushroom::getHealth() {
     return health;
 }
-
-bool Mushroom::bulletCollision(PewPew& bullet){
-    return (CollisionTest(sprite, bullet.bullet));
-}
-
-void Mushroom::mushroomHit() {
-    health--;
-    if (health == 2)
-        sprite.setFillColor(sf::Color(255,255,0));
-    else if (health == 1)
-        sprite.setFillColor(sf::Color(255,0,0));
-}
-    
-

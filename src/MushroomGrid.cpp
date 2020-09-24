@@ -26,6 +26,21 @@ void MushroomGrid::spawnMushrooms() {
     }
 }
 
+//void MushroomGrid::respawn() {
+//    for (int i = 2; i < 23; i++) {
+//        for (int j = 1; j < 16; j++) {
+//            int spawnRoll = rand() % 100;
+//            if (spawnRoll < spawnChance){
+//                if (!adjacentMushroom(i, j)){
+//                    Mushroom mushy(i, j);
+//                    mushroomGrid.push_back(Mushroom {mushy});
+//                    size++;
+//                }
+//            }
+//        }
+//    }
+//}
+
 void MushroomGrid::drawMushrooms(sf::RenderWindow& window) {
     for (Mushroom mushy : mushroomGrid)
         window.draw(mushy.sprite);

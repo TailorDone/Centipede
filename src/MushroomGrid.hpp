@@ -16,6 +16,7 @@ public:
     MushroomGrid();
     std::vector<Mushroom> mushroomGrid;
     void spawnMushrooms();
+    //void respawn();
     void drawMushrooms(sf::RenderWindow& window);
     int getSize();
     Mushroom operator[](int index) const;

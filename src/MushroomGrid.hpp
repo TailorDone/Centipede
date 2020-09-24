@@ -9,6 +9,7 @@
 #define MushroomGrid_hpp
 
 #include <SFML/Graphics.hpp>
+#include <cstdlib>
 #include "Mushroom.hpp"
 
 class MushroomGrid {

@@ -16,14 +16,14 @@ public:
     MushroomGrid();
     std::vector<Mushroom> mushroomGrid;
     void spawnMushrooms();
-    //void respawn();
+    void respawn();
     void drawMushrooms(sf::RenderWindow& window);
     int getSize();
     Mushroom operator[](int index) const;
     Mushroom& operator[](int index);
     bool adjacentMushroom(int column, int row);
 private:
-    int spawnChance = 10;
+    int spawnChance = 5;
     int size = 0;
 };
 

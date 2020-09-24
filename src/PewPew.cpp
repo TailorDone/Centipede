@@ -19,11 +19,11 @@ void PewPew::drawBullet(sf::RenderWindow& window) {
 }
 
 void PewPew::move(sf::Time dt){
-    bullet.move(0, (-1000 * dt.asSeconds()));
+    bullet.move(0, (-500 * dt.asSeconds()));
 }
 
 void PewPew::removePewPews(std::vector<PewPew>& firedShots, int& bulletCount){
-    if (bulletCount == 10){
+    if (bulletCount == 25){
         firedShots.erase(firedShots.begin());
         bulletCount--;
     }

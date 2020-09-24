@@ -28,11 +28,36 @@ CentipedeSegment& Centipede::operator[](int index){
 }
 
 Centipede::Centipede(){
-    for (int i = 0; i < 15; i++) {
+    for (int i = 0; i < bodyLength; i++) {
         CentipedeSegment buggyBoi(i);
         centipede.push_back(buggyBoi);
         centipede[i].movingRight = true;
     }
+}
+
+Centipede::Centipede(const Centipede& rhs) {
+    for (int i = 0; i < rhs.bodyLength; i++) {
+        CentipedeSegment buggyBoi(i);
+        centipede.push_back(buggyBoi);
+        centipede[i].movingRight = true;
+    }
+}
+
+Centipede& Centipede::operator=(const Centipede& rhs) {
+    for (int i = 0; i < rhs.bodyLength; i++) {
+        CentipedeSegment buggyBoi(i);
+        centipede.push_back(buggyBoi);
+        centipede[i].movingRight = true;
+    }
+    return *this;
+}
+
+void Centipede::setBodyLength(int i) {
+    bodyLength = i;
+}
+
+int Centipede::getBodyLength() {
+    return bodyLength;
 }
 
 void Centipede::drawCentipede(sf::RenderWindow& window) {

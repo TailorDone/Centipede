@@ -51,9 +51,12 @@ int main()
 
     //loading game class variables
     MushroomGrid mushroomGrid;
+    int difficultyLevel = 5;
     Centipede centipede;
+    Centipede centipedeReset;
     Player playerOne;
     std::vector<PewPew> firedShot;
+    std::vector<PewPew> clearBullets;
     int bulletCount = 0;
     bool gameStarted = false;
     bool youLose = false;
@@ -95,9 +98,10 @@ int main()
 //                if (event.type == sf::Event::KeyPressed) {
 //                    if (event.key.code == sf::Keyboard::Enter) {
 //                        youLose = false;
-                        //reset centipede
+//                        difficultyLevel = 5;
+//                        centipedeReset.setBodyLength(difficultyLevel);
+//                        centipede = centipedeReset;
 //                    }
-                //add "try again" button click
 //                }
             }
         }
@@ -113,6 +117,17 @@ int main()
                 if (event.type == sf::Event::Closed)
                     window.close();
             //add "try again" button click
+                if (event.type == sf::Event::KeyPressed) {
+                    if (event.key.code == sf::Keyboard::Enter) {
+                        youWin = false;
+                        firedShot = clearBullets;
+                        bulletCount = 0;
+                        difficultyLevel += 2;
+                        centipedeReset.setBodyLength(difficultyLevel);
+                        centipede = centipedeReset;
+                        mushroomGrid.respawn();
+                    }
+                }
             }
         }
             
@@ -126,7 +141,7 @@ int main()
                     window.close();
                 
                 if (event.type == sf::Event::KeyPressed) {
-                    if (event.key.code == sf::Keyboard::Space && bulletCount < 11) {
+                    if (event.key.code == sf::Keyboard::Space && bulletCount < 26) {
                         float startPosition = playerOne.getCenter();
                         PewPew newBullet(startPosition);
                         sound.play();
@@ -187,14 +202,12 @@ int main()
             //check if you win! :)
             if (centipede.centipede.size() == 0) {
                 youWin = true;
-                //window.close() ;
             }
 
             //check if centipede is on player row. If so, you lose :(
-                if (centipede.centipede[0].segment.getPosition().y == 900) {
-                    youLose = true;
-                    //window.close();
-                }
+            if (centipede.centipede[0].segment.getPosition().y == 900) {
+                youLose = true;
+            }
                 
         }
         // end the current frame

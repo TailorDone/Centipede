@@ -24,22 +24,30 @@ public:
     void moveLeft();
     void moveDown();
     bool movingRight;
-    
-    //sf::CircleShape head;
 private:
 };
 
 class Centipede {
 public:
-    std::vector<CentipedeSegment> centipede;
     Centipede();
-    Centipede(int length);
+    Centipede(int bodyLength);
+    
+    //Rule of 3 declaration
+    Centipede(const Centipede& rhs);
+    Centipede& operator=(const Centipede& rhs);
+    //~Centipede();
+    
+    int bodyLength = 5;
+    std::vector<CentipedeSegment> centipede;
+    
     void move(MushroomGrid& mushroomGrid);
     void drawCentipede(sf::RenderWindow& window);
+    void setBodyLength(int i);
+    int getBodyLength();
     CentipedeSegment operator[](int index) const;
     CentipedeSegment& operator[](int index);
 private:
-    int bodyLength = 10;
+    //int bodyLength = 10;
 };
 
 

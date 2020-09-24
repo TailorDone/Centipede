@@ -20,9 +20,9 @@ public:
     CentipedeSegment(int i);
     sf::CircleShape segment;
     bool MushroomCollision(Mushroom& mushy);
-    void moveRight(sf::Time dt);
-    void moveLeft(sf::Time dt);
-    void moveDown(sf::Time dt);
+    void moveRight();
+    void moveLeft();
+    void moveDown();
     bool movingRight;
     
     //sf::CircleShape head;
@@ -34,7 +34,7 @@ public:
     std::vector<CentipedeSegment> centipede;
     Centipede();
     Centipede(int length);
-    void move(sf::Time dt, MushroomGrid& mushroomGrid);
+    void move(MushroomGrid& mushroomGrid);
     void drawCentipede(sf::RenderWindow& window);
     CentipedeSegment operator[](int index) const;
     CentipedeSegment& operator[](int index);

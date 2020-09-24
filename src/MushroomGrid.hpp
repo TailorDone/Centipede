@@ -22,7 +22,7 @@ public:
     Mushroom& operator[](int index);
     bool adjacentMushroom(int column, int row);
 private:
-    int spawnChance = 5;
+    int spawnChance = 10;
     int size = 0;
 };
 

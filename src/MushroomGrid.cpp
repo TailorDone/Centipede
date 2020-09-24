@@ -12,7 +12,7 @@ MushroomGrid::MushroomGrid() {
 }
 
 void MushroomGrid::spawnMushrooms() {
-    for (int i = 0; i < 25; i++) {
+    for (int i = 2; i < 23; i++) {
         for (int j = 1; j < 16; j++) {
             int spawnRoll = rand() % 100;
             if (spawnRoll < spawnChance){
@@ -47,7 +47,7 @@ bool MushroomGrid::adjacentMushroom(int column, int row){
     for (Mushroom placedMushy : mushroomGrid){
         int placedCol = placedMushy.getColumn();
         int placedRow = placedMushy.getRow();
-        if (placedCol == column - 1 && (placedRow == row - 1 || placedRow == row + 1)){
+        if ((placedCol == column - 1 && (placedRow == row - 1 || placedRow == row + 1)) || (placedCol==column && placedRow + 1 == row)){
             return true;
         }
     }

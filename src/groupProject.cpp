@@ -32,7 +32,7 @@ int main()
             //return 0;
         }
             
-            
+
         sf::Time dt = clock.restart();
         
         // check all the window's events that were triggered since the last iteration of the loop
@@ -73,7 +73,7 @@ int main()
         
         playerOne.drawPlayer(window);
         
-        centipede.move(dt, mushroomGrid);
+        centipede.move(mushroomGrid);
         centipede.drawCentipede(window);
 
         
@@ -83,7 +83,8 @@ int main()
             firedShot[i].removePewPews(firedShot, bulletCount);
             firedShot[i].drawBullet(window);
             for (int j = 0; j < mushroomGrid.getSize(); j++){
-                if (mushroomGrid[j].bulletCollision(firedShot[i])){
+                Collision mushroomShot;
+                if (mushroomShot.BulletCollisionTest(mushroomGrid[j].sprite, firedShot[i].bullet)){
                     firedShot.erase(firedShot.begin() + i);
                     bulletCount--;
                     mushroomGrid[j].mushroomHit();
@@ -99,7 +100,7 @@ int main()
                 centipede.centipede.pop_back();
             }
         }
-                    
+
         // end the current frame
         window.display();
 

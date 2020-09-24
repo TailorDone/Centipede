@@ -46,58 +46,53 @@ bool CentipedeSegment::MushroomCollision(Mushroom& mushy){
     return (check.MushroomCollisionTest(segment, mushy.sprite));
 }
 
-void Centipede::move(sf::Time dt, MushroomGrid& mushroomGrid) {
+void Centipede::move(MushroomGrid& mushroomGrid) {
+    Collision check;
     for(int i = 0; i < centipede.size(); i++){
         if (centipede[i].movingRight) {
             if (centipede[i].segment.getPosition().x < 1200) {
+                centipede[i].moveRight();
                 for (int j = 0; j < mushroomGrid.getSize(); j++) {
-                    if (centipede[i].MushroomCollision(mushroomGrid[j])) {
-                        centipede[i].moveDown(dt);
+                    if (check.MushroomCollisionTest(centipede[i].segment, mushroomGrid[j].sprite)) {
+                        centipede[i].moveDown();
                         centipede[i].movingRight = false;
                     }
-                    else centipede[i].moveRight(dt);
                 }
             }
             else if (centipede[i].segment.getPosition().x >= 1200) {
-                centipede[i].moveDown(dt);
+                centipede[i].moveDown();
                 centipede[i].movingRight = false;
             }
         }
         else if (!centipede[i].movingRight) {
             if (centipede[i].segment.getPosition().x > 0) {
+                centipede[i].moveLeft();
                 for (int j = 0; j < mushroomGrid.getSize(); j++) {
-                    if (centipede[i].MushroomCollision(mushroomGrid[j])) {
-                        centipede[i].moveDown(dt);
+                    if (check.MushroomCollisionTest(centipede[i].segment, mushroomGrid[j].sprite)) {
+                        centipede[i].moveDown();
                         centipede[i].movingRight = true;
                     }
-                    else centipede[i].moveLeft(dt);
                 }
             }
             else if (centipede[i].segment.getPosition().x <= 0) {
-                centipede[i].moveDown(dt);
+                centipede[i].moveDown();
                 centipede[i].movingRight = true;
             }
         }
     }
 }
 
-void CentipedeSegment::moveRight(sf::Time dt) {
+void CentipedeSegment::moveRight() {
     sf::Vector2f currentPosition = segment.getPosition();
-    segment.move(15 * dt.asSeconds(), 0);
-    //segment.setPosition(currentPosition.x + 10, currentPosition.y);
+    segment.setPosition(currentPosition.x + 10, currentPosition.y);
 }
 
-void CentipedeSegment::moveLeft(sf::Time dt) {
+void CentipedeSegment::moveLeft() {
     sf::Vector2f currentPosition = segment.getPosition();
-    segment.move(-15 * dt.asSeconds(), 0);
-    //segment.setPosition(currentPosition.x - 10, currentPosition.y);
+    segment.setPosition(currentPosition.x - 10, currentPosition.y);
 }
 
-void CentipedeSegment::moveDown(sf::Time dt) {
+void CentipedeSegment::moveDown() {
     sf::Vector2f currentPosition = segment.getPosition();
-    //segment.move(0, 50 * dt.asSeconds());
-    if (movingRight)
-        segment.setPosition(currentPosition.x-5, currentPosition.y + 50);
-    else
-        segment.setPosition(currentPosition.x+5, currentPosition.y + 50);
+    segment.setPosition(currentPosition.x, currentPosition.y + 50);
 }

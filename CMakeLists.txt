@@ -23,9 +23,11 @@ cmake_minimum_required(VERSION 3.15)
 
 #the project is called asteroids
 project(groupProject)
+project(runTests)
 
 #the project contains an executable named groupProject that uses the following cpp files
-add_executable(groupProject src/groupProject.cpp src/Player.cpp src/Player.hpp src/Mushroom.cpp src/Mushroom.hpp src/PewPew.cpp src/PewPew.hpp src/MushroomGrid.cpp src/MushroomGrid.hpp src/Collision.cpp src/Collision.hpp src/Centipede.cpp src/Centipede.hpp)
+add_executable(groupProject src/Player.cpp src/Player.hpp src/Mushroom.cpp src/Mushroom.hpp src/PewPew.cpp src/PewPew.hpp src/MushroomGrid.cpp src/MushroomGrid.hpp src/Collision.cpp src/Collision.hpp src/Centipede.cpp src/Centipede.hpp src/groupProject.cpp)
+add_executable(runTests src/Player.cpp src/Player.hpp src/Mushroom.cpp src/Mushroom.hpp src/PewPew.cpp src/PewPew.hpp src/MushroomGrid.cpp src/MushroomGrid.hpp src/Collision.cpp src/Collision.hpp src/Centipede.cpp src/Centipede.hpp src/catch.hpp src/Tests.cpp)
 
 #create a folder named "cmake" at the top of your project and put the
 #findSFML.cmake file in it.  This line tells Cmake to look there for
@@ -40,6 +42,8 @@ find_package(SFML 2.5 COMPONENTS graphics audio REQUIRED)
 
 #tells Cmake that the asteroids executable needs to be linked with SFML
 target_link_libraries(groupProject sfml-graphics sfml-audio)
+target_link_libraries(runTests sfml-graphics sfml-audio)
 
 #passes an option to clang when compiling to use recent c++ stuff
 target_compile_options(groupProject PUBLIC -std=c++17)
+target_compile_options(runTests PUBLIC -std=c++17)

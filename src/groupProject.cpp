@@ -8,6 +8,8 @@
 #include "PewPew.hpp"
 #include "Centipede.hpp"
 #include "Collision.hpp"
+#include "catch.hpp"
+
 
 
 int main()
@@ -45,7 +47,7 @@ int main()
     loseScreenTexture.loadFromImage(loseScreenImage);
     
     sf::Image winScreenImage;
-    winScreenImage.loadFromFile("Winner.png");
+    winScreenImage.loadFromFile("YouWin.png");
     sf::Texture winScreenTexture;
     winScreenTexture.loadFromImage(winScreenImage);
 

@@ -28,7 +28,7 @@ int main(){
     sound.setVolume(10);
 
     sf::SoundBuffer buffer2;
-    buffer2.loadFromFile("Chiptronical.ogg");
+    buffer2.loadFromFile("Chiptronical.ogg"); //Source patrickdearteaga.com 
     sf::Sound backgroundMusic;
     backgroundMusic.setBuffer(buffer2);
     backgroundMusic.setVolume(10);
